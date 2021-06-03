@@ -1,0 +1,32 @@
+{
+  "name": "sqs-and-lambda-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "consumer:dev": "nodemon src/consumer",
+    "lambda:dev": "serverless offline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloAlexandre/sqs-and-lambda-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloAlexandre/sqs-and-lambda-example/issues"
+  },
+  "homepage": "https://github.com/PabloAlexandre/sqs-and-lambda-example#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "serverless": "^2.44.0",
+    "serverless-offline": "^7.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.921.0",
+    "config": "^3.3.6",
+    "sqs-consumer": "^5.5.0"
+  }
+}

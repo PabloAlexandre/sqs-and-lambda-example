@@ -1,0 +1,20 @@
+service: aws-node-rest-api-project
+
+frameworkVersion: '2'
+
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+
+functions:
+  hello:
+    handler: src/api/handler.save
+    events:
+      - http:
+          path: /save
+          method: post
+
+plugins:
+  - serverless-offline

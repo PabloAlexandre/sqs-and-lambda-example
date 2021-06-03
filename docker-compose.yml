@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  db:
+    image: mongo:4.1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports: ['27017:27017']
+
+  redis:
+    image: redis:5.0
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - '4566:4566'
+      - '4571:4571'
+      - '9000:8080'
+    environment:
+      - SERVICES=sqs,sns
+
+  localstack_setup:
+    build:
+      context: .
+      dockerfile: ./docker/localstack/Dockerfile
+    environment:
+      - AWS_ACCESS_KEY_ID=!VeryKey!
+      - AWS_SECRET_ACCESS_KEY=!MuchSecret!
+      - AWS_DEFAULT_REGION=us-east-1
+    entrypoint: /bin/sh -c
+    command: /scripts/localstack-init.sh
+    depends_on:
+      - localstack
